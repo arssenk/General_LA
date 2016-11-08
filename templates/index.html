@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Linear algebra project</title>
+        <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+         });
+         </script>
+        <script type="text/javascript" async src = "//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+    <body>
+        <div id="container">
+            <div class="title"></div>
+                <h1>Determine whether matrix is consistent or not.</h1>
+            <div id="content" align="left">
+                <form method="post" action="/">
+                  <label for="matrix">Please enter matrix:</label><br />
+                  <textarea name="matrix" cols="50" rows="15" >{% if new_matrix is defined %}{{matrix}}{% endif %}</textarea><br />
+                  <input type="submit" />
+                </form>
+            </div >
+            {% if new_matrix is defined %}
+                <p align="center">                    Reduced matrix: {{ k }}{{new_matrix}}</p>
+            {% endif %}
+        </div>
+    </body>
+</html>
