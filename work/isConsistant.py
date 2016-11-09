@@ -40,13 +40,14 @@ def main(matrix_a, vector_b):
                     final_matrix = add_vector(matrix_a, vector_b)
                     return final_matrix,"System is inconsistent"
         else:
-            return "System is inconsistent."
+            return add_vector(matrix_a, vector_b), "System is inconsistent."
     else:
-        return "Wrong size of matrix"
+        return add_vector(matrix_a, vector_b), "Wrong size of matrix"
 
 
 def to_return(matrix):
     A = to_reduced_row_echelon_form(matrix)
+    print(A)
     for i in range(len(A)):
         for j in range(len(A[i])):
             if A[i][j] == -0.0:

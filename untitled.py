@@ -52,8 +52,8 @@ def get_index():
         message = new_matrix[1]
         new_matrix = convert_to_matrix(matrix_to_str(new_matrix[0]))
         if message == 'System is inconsistent':
-            return render_template('index.html', k=message, matrix=matrix, new_matrix=convert_to_matrix(matrix))
-        return render_template('index.html', k = message, matrix=matrix, new_matrix=new_matrix)
+            return render_template('index.html', k = message, matrix = matrix, new_matrix = convert_to_matrix(matrix))
+        return render_template('index.html', k = message, matrix = matrix, new_matrix = new_matrix)
     else:
         return render_template('index.html')
 
