@@ -27,7 +27,8 @@ def main(matrix_a, vector_b):
     if check_matrix(matrix_a):
         if number_of_rows(matrix_a) == number_of_rows(vector_b):
             if consist_of_zero(vector_b):
-                return "System is always consistent."
+                final_matrix = add_vector(matrix_a, vector_b)
+                return final_matrix,"System is always consistent."
             else:
                 final_matrix = add_vector(matrix_a, vector_b)
                 final_matrix = to_return(final_matrix)
@@ -36,7 +37,8 @@ def main(matrix_a, vector_b):
                 if final_matrix:
                     return tmp, "System is consistent"
                 else:
-                    return "System is inconsistent"
+                    final_matrix = add_vector(matrix_a, vector_b)
+                    return final_matrix,"System is inconsistent"
         else:
             return "System is inconsistent."
     else:
@@ -53,7 +55,6 @@ def to_return(matrix):
 
 
 def to_reduced_row_echelon_form(matrix):
-    counter = 0
     if not matrix:
         return
     lead = 0
@@ -82,14 +83,13 @@ def to_reduced_row_echelon_form(matrix):
     for i in matrix:
         a = []
         for j in i:
-
-            a.append(round(j, 1))
+            a.append(round(j,1))
         final_matr.append(a)
     return final_matr
 
 
 def sum_of_row(row):
-    a = row[:(len(row)-1)]
+    a = row[:(len(row) - 1)]
     return sum(a)
 
 
@@ -108,3 +108,8 @@ def add_vector(matrix, vector):
         return matrix
     else:
         return "Wrong vector"
+
+
+
+
+
