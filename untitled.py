@@ -4,11 +4,14 @@ app = Flask(__name__)
 
 def matrix_to_int(matrix):
     final_matrix =[]
-    for i in matrix.split('\r'):
-        tmp = []
-        for j in i.split(' '):
-            tmp.append(int(j))
-        final_matrix.append(tmp)
+    try:
+        for i in matrix.split('\r'):
+            tmp = []
+            for j in i.split(' '):
+                tmp.append(int(j))
+            final_matrix.append(tmp)
+    except ValueError:
+        return "Please input valid matrix again"
     return final_matrix
 
 def matrix_to_str(matrix):
@@ -47,11 +50,13 @@ def get_main(matrix):
 def get_index():
     if request.method == "POST":
         matrix = request.form['matrix']
+        if type(matrix_to_int(matrix)) == str:
+            return render_template('index.html', k=matrix_to_int(matrix), matrix=matrix, new_matrix=convert_to_matrix(matrix))
         matrix_1, vector = get_main(matrix_to_int(matrix))
         new_matrix = work.isConsistant.main(matrix_1, vector)
         message = new_matrix[1]
         new_matrix = convert_to_matrix(matrix_to_str(new_matrix[0]))
-        if message == 'System is inconsistent':
+        if message == 'System is inconsistent' or message == 'Wrong size of matrix':
             return render_template('index.html', k = message, matrix = matrix, new_matrix = convert_to_matrix(matrix))
         return render_template('index.html', k = message, matrix = matrix, new_matrix = new_matrix)
     else:
