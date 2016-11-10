@@ -15,9 +15,9 @@
                 <h1>Determine whether system Ax = b is consistent or not.</h1>
             <div id="content" align="left">
                 <form method="post" action="/">
-                  <label for="matrix">Please enter matrix:</label><br />
+                  <label for="matrix">Please enter an augmented matrix:</label><br />
                   <textarea name="matrix" cols="50" rows="15" >{% if new_matrix is defined %}{{matrix}}{% endif %}</textarea><br />
-                  <input type="submit" />
+                  <input type="submit" align="center"/>
                 </form>
             </div >
             {% if new_matrix is defined %}

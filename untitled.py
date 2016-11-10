@@ -50,6 +50,8 @@ def get_main(matrix):
 def get_index():
     if request.method == "POST":
         matrix = request.form['matrix']
+        if not matrix:
+            return render_template('index.html', k="Input valid matrix again please", matrix=matrix, new_matrix=matrix)
         if type(matrix_to_int(matrix)) == str:
             return render_template('index.html', k=matrix_to_int(matrix), matrix=matrix, new_matrix=convert_to_matrix(matrix))
         matrix_1, vector = get_main(matrix_to_int(matrix))
