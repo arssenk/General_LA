@@ -110,7 +110,3 @@ def add_vector(matrix, vector):
     else:
         return "Wrong vector"
 
-
-
-
-

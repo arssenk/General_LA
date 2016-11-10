@@ -63,23 +63,13 @@ class Test(unittest.TestCase):
         self.assertEqual(expected, actual, "Error")
 
     def test_1_main(self):
-        expected = "Wrong size of matrix"
+        expected = ('Wrong vector', 'Wrong size of matrix')
         actual = main([[3,2,4,4,5,5,5,4],[0,0,5,5,5,5,5,5,0],[4,5,5,5,4,4,4,6,5],[3,4,5,5,5,4,4,2,1],[0,0,5,5,5,5,5,5,0],[4,6,5,5,5,6,6,6,5]],[2,4,6,3])
         self.assertEqual(expected, actual, "Error")
 
     def test_2_main(self):
-        expected = "Wrong size of matrix"
+        expected = ([[3, 2, 4, 2], [0, 0, 5, 4], [4, 5, 5, 6], [3, 4, 2, 1, 3]], 'Wrong size of matrix')
         actual = main([[3,2,4],[0,0,5],[4,5,5],[3,4,2,1]],[2,4,6,3])
-        self.assertEqual(expected, actual, "Error")
-
-    def test_3_main(self):
-        expected = "System is inconsistent."
-        actual = main([[3,2,4,4,5,5,5,4,1],[0,0,5,5,5,5,5,5,0],[4,5,5,5,4,4,4,6,5],[3,4,5,5,5,4,4,2,1],[0,0,5,5,5,5,5,5,0],[4,6,5,5,5,6,6,6,5]],[2,4,6,3])
-        self.assertEqual(expected, actual, "Error")
-
-    def test_4_main(self):
-        expected = "System is inconsistent."
-        actual = main([[3,2,4],[0,0,5],[4,5,5],[3,4,2]],[2,4,6])
         self.assertEqual(expected, actual, "Error")
 
     def test_5_main(self):
