@@ -34,8 +34,8 @@ def convert_to_matrix(s):
             new_matrix += line_element + "&"
         new_matrix += str(line[-1]) + '\\\\\n\n'
     new_matrix += '\end{array}'
-
     return new_matrix
+
 
 def get_main(matrix):
     final_matr = []
