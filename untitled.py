@@ -56,6 +56,9 @@ def get_index():
             return render_template('index.html', k=matrix_to_int(matrix), matrix=matrix, new_matrix=convert_to_matrix(matrix))
         matrix_1, vector = get_main(matrix_to_int(matrix))
         new_matrix = work.isConsistant.main(matrix_1, vector)
+
+        if type(new_matrix) == str:
+            return render_template('index.html', k="Input valid matrix again please", matrix=matrix, new_matrix=convert_to_matrix(matrix))
         message = new_matrix[1]
         new_matrix = convert_to_matrix(matrix_to_str(new_matrix[0]))
         if message == 'System is inconsistent' or message == 'Wrong size of matrix':

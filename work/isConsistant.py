@@ -32,6 +32,8 @@ def main(matrix_a, vector_b):
             else:
                 final_matrix = add_vector(matrix_a, vector_b)
                 final_matrix = to_return(final_matrix)
+                if type(final_matrix) == str:
+                    return final_matrix
                 tmp = final_matrix
                 final_matrix = is_consistent(final_matrix)
                 if final_matrix:
@@ -47,7 +49,8 @@ def main(matrix_a, vector_b):
 
 def to_return(matrix):
     A = to_reduced_row_echelon_form(matrix)
-    print(A)
+    if A == None:
+        return "Input wrong matrix"
     for i in range(len(A)):
         for j in range(len(A[i])):
             if A[i][j] == -0.0:
