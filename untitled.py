@@ -2,8 +2,9 @@ from flask import Flask, render_template, request
 import work.isConsistant
 app = Flask(__name__)
 
+
 def matrix_to_int(matrix):
-    final_matrix =[]
+    final_matrix = []
     try:
         for i in matrix.split('\r'):
             tmp = []
@@ -14,6 +15,7 @@ def matrix_to_int(matrix):
         return "Please input valid matrix again"
     return final_matrix
 
+
 def matrix_to_str(matrix):
     final_matrix = []
     for k in matrix:
@@ -23,8 +25,8 @@ def matrix_to_str(matrix):
         final_matrix.append(tmp)
     return final_matrix
 
-def convert_to_matrix(s):
 
+def convert_to_matrix(s):
     new_matrix = '\\begin{array}{'
     if len(s[0]) - 1 == 0:
         return '\\begin{array}{c}\end{array}'
@@ -53,17 +55,22 @@ def get_index():
         if not matrix:
             return render_template('index.html', k="Input valid matrix again please", matrix=matrix, new_matrix=matrix)
         if type(matrix_to_int(matrix)) == str:
-            return render_template('index.html', k=matrix_to_int(matrix), matrix=matrix, new_matrix=convert_to_matrix(matrix))
+            return render_template('index.html', k=matrix_to_int(matrix), matrix=matrix, new_matrix=
+                convert_to_matrix(matrix))
         matrix_1, vector = get_main(matrix_to_int(matrix))
         new_matrix = work.isConsistant.main(matrix_1, vector)
 
-        if type(new_matrix) == str:
-            return render_template('index.html', k="Input valid matrix again please", matrix=matrix, new_matrix=convert_to_matrix(matrix))
+        if new_matrix == "Matrix is inconsistant":
+            return render_template('index.html', k="Matrix is inconsistant", matrix=matrix, new_matrix=
+                convert_to_matrix(matrix))
+        if new_matrix == "System is always consistent.":
+            return render_template('index.html', k="System is always consistent.", matrix=matrix, new_matrix=
+            convert_to_matrix(matrix))
         message = new_matrix[1]
         new_matrix = convert_to_matrix(matrix_to_str(new_matrix[0]))
         if message == 'System is inconsistent' or message == 'Wrong size of matrix':
-            return render_template('index.html', k = message, matrix = matrix, new_matrix = convert_to_matrix(matrix))
-        return render_template('index.html', k = message, matrix = matrix, new_matrix = new_matrix)
+            return render_template('index.html', k=message, matrix = matrix, new_matrix = convert_to_matrix(matrix))
+        return render_template('index.html', k=message, matrix=matrix, new_matrix=new_matrix)
     else:
         return render_template('index.html')
 
