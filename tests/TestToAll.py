@@ -73,12 +73,12 @@ class Test(unittest.TestCase):
         self.assertEqual(expected, actual, "Error")
 
     def test_5_main(self):
-        expected = ([[1, 2, 3, 0], [2, 4, 5, 0], [3, 2, 1, 0]], 'System is always consistent.')
+        expected = 'System is always consistent.'
         actual = main([[1,2,3],[2,4,5],[3,2,1]],[0,0,0])
         self.assertEqual(expected, actual, "Error")
 
     def test_6_main(self):
-        expected = ([[1,2,3,0],[5,5,5,0],[7,6,5,0],[6,5,4,0],[6,5,4,0],[2,4,5,0],[3,2,1,0]], "System is always consistent.")
+        expected =  "System is always consistent."
         actual = main([[1,2,3],[5,5,5],[7,6,5],[6,5,4],[6,5,4],[2,4,5],[3,2,1]],[0,0,0,0,0,0,0])
         self.assertEqual(expected, actual, "Error")
 
